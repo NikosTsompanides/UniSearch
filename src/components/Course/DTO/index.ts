@@ -1,0 +1,1 @@
+export { GetCoursesFilter } from './GetCoursesDTO';

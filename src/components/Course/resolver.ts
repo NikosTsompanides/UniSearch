@@ -1,20 +1,21 @@
 import { Resolver, Query, Args } from 'type-graphql';
 import { Course } from './entity';
 import { CourseRepository } from './repository';
-import { GetCoursesDTO } from './dto/GetCoursesDTO';
+import { GetCoursesFilter } from './DTO';
 import { logger } from '../../utils/Logger';
+import { getCustomRepository } from 'typeorm';
 
 @Resolver((of) => Course)
 export class CourseResolver {
 	private readonly courseRepository: CourseRepository;
 	constructor() {
-		this.courseRepository = new CourseRepository();
+		this.courseRepository = getCustomRepository(CourseRepository);
 	}
 
 	@Query((returns) => [Course!])
-	courses(@Args() args: GetCoursesDTO) {
+	async courses(@Args() args: GetCoursesFilter) {
 		try {
-			return this.courseRepository.find();
+			return await this.courseRepository.findMany(args);
 		} catch (error) {
 			logger.error(error);
 		}

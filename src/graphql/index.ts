@@ -6,4 +6,5 @@ export const getSchema = () =>
 	buildSchema({
 		resolvers: [CourseResolver],
 		emitSchemaFile: true,
+		validate: true,
 	});

@@ -13,6 +13,11 @@ type Curriculum {
   courses: [Course!]!
 }
 
+input FilterCourse {
+  """Creates a Like query on the title of Course"""
+  title: String!
+}
+
 input Order {
   """Property of object to order"""
   property: String!
@@ -25,7 +30,7 @@ input Pagination {
 }
 
 type Query {
-  courses(order: Order!, pagination: Pagination!): [Course!]!
+  courses(filter: FilterCourse, order: Order, pagination: Pagination): [Course!]!
 }
 
 """Sort Methods"""
