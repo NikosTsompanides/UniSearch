@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { SALT_ROUNDS } from './constants';
 dotenv.config();
 
 export const config = {
@@ -18,5 +19,8 @@ export const config = {
 	},
 	jwt: {
 		secret: process.env.JWT_SECRET,
+	},
+	bcrypt: {
+		saltRounds: SALT_ROUNDS,
 	},
 };
