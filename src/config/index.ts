@@ -16,4 +16,7 @@ export const config = {
 		password: process.env.POSTGRES_PASSWORD,
 		database: process.env.POSTGRES_DB,
 	},
+	jwt: {
+		secret: process.env.JWT_SECRET,
+	},
 };
