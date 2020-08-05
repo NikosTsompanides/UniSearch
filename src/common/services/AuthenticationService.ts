@@ -1,6 +1,6 @@
 import { sign, SignOptions, verify } from 'jsonwebtoken';
-import { config } from '../config';
-import { logger } from './Logger';
+import { config } from '../../config';
+import { logger } from '../../utils/Logger';
 
 export class AuthenticationService {
 	public static signToken(payload: object, options?: SignOptions): Promise<string> {
